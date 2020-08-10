@@ -26,29 +26,29 @@ int main(int argc, char **argv) {
 	for (char **arg_ptr = argv+1; argc > 1; --argc, ++arg_ptr) {
 		if (is_encrypt_option(*arg_ptr)) {
 			if (flags.decrypt) {
-				printf("%s: invalid use: encrypt and decrypt selected\n", argv[0]);
+				fprintf(stderr, "%s: invalid use: encrypt and decrypt selected\n", argv[0]);
 				return 1;
 			} else {
 				flags.encrypt = 1;
 			}
 		} else if (is_decrypt_option(*arg_ptr)) {
 			if (flags.encrypt) {
-				printf("%s: invalid use: encrypt and decrypt selected\n", argv[0]);
+				fprintf(stderr, "%s: invalid use: encrypt and decrypt selected\n", argv[0]);
 				return 1;
 			} else {
 				flags.decrypt = 1;
 			}
 		} else if (is_key_option(*arg_ptr)) {
 			if (flags.key_arg) {
-				printf("%s: invalid use: multiple keys detected\n", argv[0]);
+				fprintf(stderr, "%s: invalid use: multiple keys detected\n", argv[0]);
 				return 1;
 			} else if (--argc <= 1) {
-				printf("%s: invalid use: key option selected but no key provided\n", argv[0]);
+				fprintf(stderr, "%s: invalid use: key option selected but no key provided\n", argv[0]);
 				return 1;
 			} else {
 				++arg_ptr;
 				if (strlen(*arg_ptr) > MAXKEYSTRLEN) {
-					printf("%s: invalid use: key too long, max length: %d\n", argv[0], MAXKEYLEN);
+					fprintf(stderr, "%s: invalid use: key too long, max length: %d\n", argv[0], MAXKEYLEN);
 					return 1;
 				} else {
 					flags.key_arg = 1;
@@ -56,13 +56,16 @@ int main(int argc, char **argv) {
 				}
 			}
 		} else {
-			printf("%s: invalid argument: %s\n", argv[0], *arg_ptr);
+			fprintf(stderr, "%s: invalid argument: %s\n", argv[0], *arg_ptr);
 			return 1;
 		}
 	}
 
 	if (!flags.key_arg) {
-		get_key(key);
+		if (!get_key(key)) {
+			fprintf(stderr, "%s: error: cannot read key from key.txt\n", argv[0]);
+			return 1;
+		}
 	}
 
 	FILE *input_fp = stdin;
