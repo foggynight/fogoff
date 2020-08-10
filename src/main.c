@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAXKEYLEN    1024
-#define MAXSTRLEN    MAXKEYLEN + 1
+#include "config.h"
+// #include "encrypt.h"
+// #include "decrypt.h"
 
 #define stringify(x) #x
 #define str(x) stringify(x)
@@ -13,13 +14,13 @@ int is_decrypt_option(char *str);
 int is_key_option(char *str);
 char *get_key(char *dest);
 
-struct Flags {
+struct {
 	unsigned int encrypt : 1;
 	unsigned int decrypt : 1;
 	unsigned int key_arg : 1;
 } flags;
 
-char key[MAXSTRLEN];
+char key[MAXKEYSTRLEN];
 
 int main(int argc, char **argv) {
 	for (char **arg_ptr = argv+1; argc > 1; --argc, ++arg_ptr) {
@@ -46,7 +47,7 @@ int main(int argc, char **argv) {
 				return 1;
 			} else {
 				++arg_ptr;
-				if (strlen(*arg_ptr) > MAXSTRLEN) {
+				if (strlen(*arg_ptr) > MAXKEYSTRLEN) {
 					printf("%s: invalid use: key too long, max length: %d\n", argv[0], MAXKEYLEN);
 					return 1;
 				} else {
