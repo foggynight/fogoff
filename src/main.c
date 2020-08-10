@@ -6,9 +6,9 @@ int decrypt_option(char *str);
 
 int main(int argc, char **argv) {
 	if (argc < 2) {
-		printf("fogoff: invalid use: too few arguments");
+		printf("%s: invalid use: too few arguments", argv[0]);
 	} else if (argc > 2) {
-		printf("fogoff: invalid use: too many arguments");
+		printf("%s: invalid use: too many arguments", argv[0]);
 	}
 
 	FILE *input_fp = stdin;
@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 	} else if (decrypt_option(argv[1])) {
 		// decrypt input
 	} else {
-		printf("fogoff: invalid argument: %s", argv[1]);
+		printf("%s: invalid argument: %s", argv[0], argv[1]);
 	}
 
 	return 0;
