@@ -4,10 +4,10 @@
 
 #include "config.h"
 #include "encrypt.h"
-#include "circular_key.h"
+#include "circular_list.h"
 
 void encrypt_file(FILE *input_fp, FILE *output_fp, char *key) {
-	KeyNode *key_node = create_circular_key(key);	
+	Node *key_node = create_circular_list(key);	
 
 	int buffer;
 	char align = 1;
@@ -18,7 +18,7 @@ void encrypt_file(FILE *input_fp, FILE *output_fp, char *key) {
 		align = -align;
 	}
 
-	destroy_circular_key(key_node);
+	destroy_circular_list(key_node);
 }
 
 char encrypt_char(char input_val, char key_val, char align) {
