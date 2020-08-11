@@ -6,14 +6,16 @@
 #include "encrypt.h"
 #include "circular_list.h"
 
+#include "char_set.c"
+
 void encrypt_file(FILE *input_fp, FILE *output_fp, char *key) {
-	Node *key_node = create_circular_list(key);	
+	Node *key_node = create_circular_list(key);
+	get_char_set(char_set);
 
 	int buffer;
 	char align = 1;
-
 	while ((buffer = fgetc(input_fp)) != EOF) {
-		buffer = encrypt_char(buffer, key_node->val, align);
+		fputc(encrypt_char(buffer, key_node->val, align), output_fp);
 		key_node = key_node->next;
 		align = -align;
 	}
@@ -22,5 +24,5 @@ void encrypt_file(FILE *input_fp, FILE *output_fp, char *key) {
 }
 
 char encrypt_char(char input_val, char key_val, char align) {
-	
+	return input_val;
 }
