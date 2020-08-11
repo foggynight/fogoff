@@ -39,6 +39,11 @@ int main(int argc, char **argv) {
 		}
 	}
 
+	if (strlen(key) == 0) {
+		fprintf(stderr, "%s: invalid use: no key provided\n", argv[0]);
+		return 1;
+	}
+	
 	FILE *input_fp = stdin;
 	FILE *output_fp = stdout;
 	if (flags.encrypt) {
