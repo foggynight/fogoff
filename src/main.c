@@ -3,7 +3,7 @@
 #include <string.h>
 
 #include "config.h"
-// #include "encrypt.h"
+#include "encrypt.h"
 // #include "decrypt.h"
 
 #define stringify(x) #x
@@ -22,13 +22,13 @@ typedef struct {
 
 enum { ENCRYPT, DECRYPT, KEY, INVALID };
 
-char key[MAXKEYSTRLEN];
+char key[KEYSTRLEN];
 
 int main(int argc, char **argv) {
 	char *get_key(char *dest);
-	Flags get_flags(int argc, char **argv);
+	Flags get_args(int argc, char **argv);
 
-	Flags flags = get_flags(argc, argv);
+	Flags flags = get_args(argc, argv);
 
 	if (!flags.key_arg) {
 		if (!get_key(key)) {
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 	FILE *input_fp = stdin;
 	FILE *output_fp = stdout;
 	if (flags.encrypt) {
-		// encrypt input
+		encrypt_file(input_fp, output_fp, key);
 	} else if (flags.decrypt) {
 		// decrypt input
 	} else {
@@ -83,7 +83,7 @@ char option_type(char *str) {
 	else return INVALID;
 }
 
-Flags get_flags(int argc, char **argv) {
+Flags get_args(int argc, char **argv) {
 	Flags flags = {0};
 
 	for (char **arg_ptr = argv+1; argc > 1; --argc, ++arg_ptr) {
