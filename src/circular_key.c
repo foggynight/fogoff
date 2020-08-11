@@ -15,3 +15,16 @@ KeyNode *create_circular_key(char *key) {
 
 	return head;
 }
+
+void destroy_circular_key(KeyNode *list_head) {
+	KeyNode *temp = list_head;
+	KeyNode *next = list_head->next;
+
+	while (next != list_head) {
+		temp = next;
+		next = next->next;
+		free(temp);
+	}
+
+	free(list_head);
+}
