@@ -1,20 +1,23 @@
 #include <stdio.h>
 
 /** 
- * Encrypt file in strlen(key) sized blocks.
+ * Encrypt file in using the key to rotate
+ * each character of the input stream.
  * 
- * @param FILE* input_fp Input stream.
- * @param FILE* output_fp Output stream.
- * @param char* key Encryption key.
+ * @param input_fp Input stream.
+ * @param output_fp Output stream.
+ * @param key Encryption key.
  */
 void encrypt_file(FILE *input_fp, FILE *output_fp, char *key);
 
-/** 
- * Encrypt block of block_size characters.
+/**
+ * Encrypt a single character, rotating it
+ * based on align and the key.
  * 
- * @param char* block Block of characters.
- * @param int block_size Size of block argument.
+ * @param input Character to encrypt.
+ * @param key Value to rotate input by.
+ * @param align Direction to rotate input.
  * 
- * @return block if successful, else NULL.
+ * @return Encrypted character.
  */
-char *encrypt_block(char *block, int block_size);
+char encrypt_char(char input, char key, char align);

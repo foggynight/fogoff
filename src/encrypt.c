@@ -4,24 +4,23 @@
 
 #include "config.h"
 #include "encrypt.h"
+#include "circular_key.h"
 
 void encrypt_file(FILE *input_fp, FILE *output_fp, char *key) {
-	size_t block_size = strlen(key);
-	char *block = malloc(block_size+1);
-	
-	while (fgets(block, block_size+1, input_fp)) {
-		int count = strlen(block);
-		if (block[count-1] == '\n') {
-			--count;
-			block[count] = '\0';
-		}
-		block = encrypt_block(block, count);
-		fwrite(block, sizeof(char), count, output_fp);
+	KeyNode *key_node = create_circular_key(key);	
+
+	int buffer;
+	char align = 1;
+
+	while ((buffer = fgetc(input_fp)) != EOF) {
+		buffer = encrypt_char(buffer, key_node->val, align);
+		key_node = key_node->next;
+		align = -align;
 	}
 
-	free(block);
+	destroy_circular_key(key_node);
 }
 
-char *encrypt_block(char *block, int block_size) {
-	return block;
+char encrypt_char(char input_val, char key_val, char align) {
+	
 }
