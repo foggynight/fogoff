@@ -3,8 +3,7 @@
 #include <string.h>
 
 #include "config.h"
-#include "encrypt.h"
-// #include "decrypt.h"
+#include "rotate.h"
 
 #define stringify(x) #x
 #define str(x) stringify(x)
@@ -47,9 +46,9 @@ int main(int argc, char **argv) {
 	FILE *input_fp = stdin;
 	FILE *output_fp = stdout;
 	if (flags.encrypt) {
-		encrypt_file(input_fp, output_fp, key);
+		rotate_file(input_fp, output_fp, key, 1);
 	} else if (flags.decrypt) {
-		// decrypt input
+		rotate_file(input_fp, output_fp, key, -1);
 	} else {
 		printf("%s: invalid use: neither encrypt (-e) nor decrypt (-d) selected\n",
 			argv[0]);
