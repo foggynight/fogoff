@@ -1,6 +1,4 @@
-#define CHARSETLEN	'~' - ' ' + 2
-
-#define get_char_set(x) char char_set[CHARSETLEN]; create_char_set(x);
+#include "char_set.h"
 
 void create_char_set(char *char_set) {
 	char_set[0] = '\n';
