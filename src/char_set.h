@@ -1,6 +1,6 @@
 #include "bin_search.h"
 
-#define CHARSETLEN	(int)('~' - ' ' + 2)
+#define CHARSETLEN	(int)('~' - ' ' + 4)
 
 /**
  * Define an array and fill it with the program's character set.
