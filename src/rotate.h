@@ -7,6 +7,7 @@
  * @param input_fp Input stream.
  * @param output_fp Output stream.
  * @param key Encryption key.
+ * @param align Direction of the rotation.
  */
 void rotate_file(FILE *input_fp, FILE *output_fp, char *key, int align);
 

@@ -7,16 +7,22 @@ size is unchanged.
 
 ## Installation
 
-1. Compile using the build.sh script
-
+To install, clone the repo and run make:
 ```
-./build.sh
+git clone https://github.com/foggynight/fogoff
+cd fogoff
+make
 ```
 
-2. To run fogoff from anywhere, create a symlink
-
+To run fogoff from anywhere, create a symlink:
 ```
 ln -s $(pwd)/fogoff /usr/local/bin/fogoff
+```
+
+To uninstall, delete the repo and remove the synlink:
+```
+rm $(path_to_repo) -rf
+rm /usr/local/bin/fogoff
 ```
 
 ## Usage
