@@ -10,8 +10,7 @@ size is unchanged.
 To install, clone the repo and run make:
 ```
 git clone https://github.com/foggynight/fogoff
-cd fogoff
-make
+cd fogoff && make
 ```
 
 To run fogoff from anywhere, create a symlink:
@@ -37,7 +36,7 @@ MODE:
 - encrypt: [-e|--encrypt]
 - decrypt: [-d|--decrypt]
 
-KEY: Encryption key, if omitted, read from key.txt.
+KEY: If omitted, encryption key is read from key.txt.
 
 EXAMPLES:
 fogoff -e <input.txt >output.txt
