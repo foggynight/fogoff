@@ -17,4 +17,4 @@ clean:
 
 .PHONY: uninstall
 uninstall:
-	rm fogoff
+	rm src/*.o fogoff

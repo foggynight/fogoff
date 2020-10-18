@@ -5,6 +5,7 @@ File encryption utility.
 Uses a rotate by character encryption algorithm with a variable length key, file
 size is unchanged.
 
+
 ## Installation
 
 To install, clone the repo and run make:
@@ -13,16 +14,11 @@ git clone https://github.com/foggynight/fogoff
 cd fogoff && make
 ```
 
-To run fogoff from anywhere, create a symlink:
+To uninstall, run make uninstall:
 ```
-ln -s $(pwd)/fogoff /usr/local/bin/fogoff
+make uninstall
 ```
 
-To uninstall, delete the repo and remove the synlink:
-```
-rm $(path_to_repo) -rf
-rm /usr/local/bin/fogoff
-```
 
 ## Usage
 
@@ -52,6 +48,7 @@ fogoff -e -k key1 <input.txt | fogoff -e -k key2 | fogoff -e -k key3 >output.txt
 
 **NOTE:** The encrypt and decrypt operations are inverse of each other, they can
 be used in reverse order if desired.
+
 
 ## Dependencies
 
