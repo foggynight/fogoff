@@ -52,4 +52,4 @@ be used in reverse order if desired.
 
 ## Dependencies
 
-1. GNU C Compiler
+- GNU C Compiler
