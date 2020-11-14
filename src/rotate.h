@@ -1,25 +1,27 @@
 #include <stdio.h>
 
 /**
- * Rotate a file in using the key to rotate
- * each character of the input stream.
+ * Rotate a file in using the key to rotate each character of the input
+ * stream.
  *
- * @param input_fp Input stream.
- * @param output_fp Output stream.
- * @param key Encryption key.
- * @param align Direction of the rotation.
+ * @params
+ * - input_fp {FILE*}: Input stream.
+ * - output_fp {FILE*}: Output stream.
+ * - key {CHAR*}: Encryption key.
+ * - align {int}: Direction of the rotation.
  */
 void rotate_file(FILE *input_fp, FILE *output_fp, char *key, int align);
 
 /**
- * Rotate a single character by the key value,
- * in the direction of align, around char_set.
+ * Rotate a single character by the key value, in the direction of
+ * align, around char_set.
  *
- * @param input Character to rotate.
- * @param key Value to rotate input by.
- * @param align Direction to rotate input.
- * @param char_set Characters to rotate around.
+ * @params
+ * - input {int}: Character to rotate.
+ * - key {int}: Value to rotate input by.
+ * - align {int}: Direction to rotate input.
+ * - char_set {char*}: Characters to rotate around.
  *
- * @return Encrypted character.
+ * @return {char}: Encrypted character.
  */
 char rotate_char(int input, int key, int align, char *char_set);

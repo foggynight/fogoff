@@ -10,15 +10,17 @@ typedef struct node {
  * the given key. Must be destroyed using the
  * destroy_circular_list function.
  *
- * @param key Key to generate list from.
+ * @params
+ * - key {char*}: Key to generate list from.
  *
- * @return Head of circular linked list.
+ * @return {Node*}: Head of circular linked list.
  */
 Node *create_circular_list(char *str);
 
 /**
  * Destroy a circular linked list.
  *
- * @param list_head Head of the list to destroy.
+ * @params
+ * - list_head {Node*}: Head of the list to destroy.
  */
 void destroy_circular_list(Node *list_node);

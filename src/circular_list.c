@@ -1,6 +1,7 @@
 #include "circular_list.h"
 
-Node *create_circular_list(char *str) {
+Node *create_circular_list(char *str)
+{
     Node *head = calloc(1, sizeof(Node));
     head->val = *str;
 
@@ -16,7 +17,8 @@ Node *create_circular_list(char *str) {
     return head;
 }
 
-void destroy_circular_list(Node *node) {
+void destroy_circular_list(Node *node)
+{
     Node *temp = node;
     Node *next = node->next;
 
