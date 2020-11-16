@@ -26,10 +26,7 @@ int main(int argc, char **argv)
     Flags flags = get_args(argc, argv);
 
     if (!flags.key_arg) {
-        if (!get_key(key)) {
-            fprintf(stderr, "%s: Error: Cannot read key from key.txt\n", argv[0]);
-            return 1;
-        }
+        get_key(key);
     }
 
     if (strlen(key) == 0) {

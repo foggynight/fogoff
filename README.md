@@ -7,11 +7,18 @@ size is unchanged.
 
 ## Installation
 
+By default fogoff will be installed in `~/.local/bin/`, although fogoff can also
+be used directly from the repo directory.
+
 ```
 git clone https://github.com/foggynight/fogoff
 cd fogoff
 make
+cp fogoff ~/.local/bin/
 ```
+
+**Note:** Should fogoff be called from the bin, the key must be provided as a
+command line argument. Use fogoff from the repo directory to utilize `key.txt`.
 
 ## Usage
 
@@ -19,13 +26,13 @@ Input and output is done using the standard IO streams. i.e. using the command
 redirection and pipeline operators.
 
 ```
-fogoff [MODE] [-k|--key] <KEY>
+fogoff [MODE] [-k|--key KEY]
 
 MODE:
 - encrypt: -e | --encrypt
 - decrypt: -d | --decrypt
 
-KEY: If omitted, encryption key is read from key.txt.
+KEY: If omitted, the key is read from key.txt.
 
 EXAMPLES:
 fogoff -e <input.txt >output.txt
@@ -41,7 +48,7 @@ fogoff -e -k key1 <input.txt \
 | fogoff -e -k key3 >output.txt
 ```
 
-**NOTE:** The encrypt and decrypt operations are inverse of each other, they can
+**Note:** The encrypt and decrypt operations are inverse of each other, they can
 be used in reverse order if desired.
 
 ## Dependencies
