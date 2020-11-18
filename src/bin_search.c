@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-2.0
+// Copyright (C) 2020 Robert Coffey
+
 #include <stdlib.h>
 
 int bin_search(char *arr, char target, int left, int right)
