@@ -1,10 +1,9 @@
-// SPDX-License-Identifier: GPL-2.0
-// Copyright (C) 2020 Robert Coffey
-/**
- * --- fogoff ---
+/* --- fogoff ---
  *
  * File encryption utility.
- */
+ *
+ * Copyright (C) 2020 Robert Coffey
+ * Licensed under the GNU GPLv2 */
 
 #include <stdio.h>
 #include <stdlib.h>
