@@ -56,7 +56,7 @@ be used in reverse order if desired.
 
 ## Dependencies
 
-- GNU C Compiler
+- GNU C compiler
 
 ## License
 
