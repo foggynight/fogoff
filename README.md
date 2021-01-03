@@ -1,6 +1,6 @@
 # fogoff
 
-File encryption utility.
+File encryption utility
 
 Uses a rotate by character encryption algorithm with a variable length key, file
 size is unchanged.
@@ -18,8 +18,7 @@ cp fogoff ~/.local/bin/
 ```
 
 **Note:** Should fogoff be called from the bin, the key must be provided as a
-command line argument. Call fogoff from the repo directory to utilize
-`key.txt`.
+command line argument. Call fogoff from the repo directory to utilize `key.txt`.
 
 ## Usage
 
@@ -56,7 +55,8 @@ be used in reverse order if desired.
 
 ## Dependencies
 
-- GNU C compiler
+- GCC
+- Make
 
 ## License
 
