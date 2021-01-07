@@ -1,17 +1,16 @@
-# Copyright (C) 2020 Robert Coffey
+# Copyright (C) 2020-2021 Robert Coffey
 # Released under the GPLv2 license
 
 CC=gcc
+CFLAGS=-I./inc/
 
 SRCS=$(wildcard src/*.c)
 OBJS=$(SRCS:%.c=%.o)
 PROGS=fogoff
 
 all: $(PROGS)
-	$(CC) -o fogoff $(OBJS)
-
+	$(CC) $(CFLAGS) -o fogoff $(OBJS)
 $(PROGS): $(OBJS)
-
 $(OBJS): $(SRCS)
 
 .PHONY: clean
