@@ -33,7 +33,7 @@ uint8_t rcon_arr[256] = {
 };
 
 /**
- * Rotate a 32-bit word to the left by 8-bits.
+ * Rotate a 32-bit word to the left by 8 bits.
  *
  * EXAMPLE: 0x12345678 -> 0x34567812
  **/
