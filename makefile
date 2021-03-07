@@ -1,3 +1,6 @@
+# Copyright (C) 2021 Robert Coffey
+# Released under the MIT license
+
 CC=gcc
 CFLAGS=-Wall -Wextra -Wpedantic -I./inc/
 
