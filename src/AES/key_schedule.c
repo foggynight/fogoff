@@ -1,13 +1,18 @@
 /**
  * *** Rijndael's Key Schedule ***
  *
- * Reference: https://cryptography.fandom.com/wiki/Rijndael_key_schedule
+ * References
+ * https://cryptography.fandom.com/wiki/Rijndael_key_schedule
+ * https://samiam.org/key-schedule.html
  *
  * Copyright (C) 2021 Robert Coffey
  * Released under the MIT license
  **/
 
 #include <stdint.h>
+
+#define KEY_LENGTH 128  // AES-128 implies a key length of 128 bits
+#define RKEY_COUNT 11   // Number of round keys needed for AES-128
 
 /* Rijndael's exponentiation of two */
 #define rcon(X) rcon_arr[(X)]
@@ -51,9 +56,36 @@ uint8_t sbox_arr[16][16] = {
     { 0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16 }
 };
 
+/* Get the byte of a word at index, least significant bit first */
+static uint8_t get_byte_of_word(uint32_t word, int index);
+
 /* Rotate a 32-bit word to the left by 8 bits
  * EXAMPLE: 0x12345678 -> 0x34567812 */
 uint32_t rotate_word(uint32_t word)
 {
     return (word << 8) | (word >> 24);
+}
+
+/* Key schedule core, scrambles the given 32-bit word */
+uint32_t schedule_core(uint32_t word, int rcon_index)
+{
+    uint32_t new_word = 0;
+
+    word = rotate_word(word);
+    for (int i = 3; i > -1; --i) {
+        uint8_t new_byte = sbox(get_byte_of_word(word, i));
+
+        new_word <<= 2;
+        new_word ^= new_byte;
+
+        if (i == 3)
+            new_word ^= rcon(rcon_index);
+    }
+
+    return new_word;
+}
+
+static uint8_t get_byte_of_word(uint32_t word, int index)
+{
+    return (word >> (index * 8)) & 0xFF;
 }
