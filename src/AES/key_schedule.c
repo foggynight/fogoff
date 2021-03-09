@@ -56,7 +56,7 @@ static uint8_t sbox_arr[16][16] = {
     { 0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16 }
 };
 
-/* Get the byte of a word at index, least significant bit first */
+/* Get the byte of a word at index, least significant byte first */
 static uint8_t get_byte_of_word(uint32_t word, int index);
 
 /* Rotate a 32-bit word to the left by 8 bits
@@ -69,15 +69,21 @@ uint32_t rotate_word(uint32_t word)
 /* Key schedule core, scrambles the given 32-bit word */
 uint32_t schedule_core(uint32_t word, int rcon_index)
 {
-    uint32_t new_word = 0;
+    uint32_t new_word = 0;     // Storage for the scrambled word
+    word = rotate_word(word);  // Rotate the original word to the left by one byte
 
-    word = rotate_word(word);
+    // Apply the S-Box to each byte of the word. Additionally, apply an
+    // xor with the rcon table value at i on the first byte of the word.
     for (int i = 3; i > -1; --i) {
+        // Get the byte at index i of the word, least significant byte
+        // first, and apply the S-Box to it to get a new byte
         uint8_t new_byte = sbox(get_byte_of_word(word, i));
 
-        new_word <<= 2;
-        new_word ^= new_byte;
+        new_word <<= 8;        // Make space in the word for the new byte
+        new_word ^= new_byte;  // xor the new byte into the scrambled word
 
+        // Applying the xor with the rcon table value at i, for only the
+        // first byte of the word
         if (i == 3)
             new_word ^= rcon(rcon_index);
     }
