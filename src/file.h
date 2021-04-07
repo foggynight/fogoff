@@ -6,4 +6,4 @@
 
 char *file_read(char *path);
 
-#endif // FILE_H
+#endif // FOGOFF_FILE_H
