@@ -7,20 +7,21 @@
 
 #include <stdio.h>
 
+#include "caesar/caesar.h"
 #include "file.h"
 
 int main(int argc, char **argv)
 {
-    if (argc != 3) {
+    if (argc != 2) {
         fprintf(stderr, "fogoff: invalid arguments\n");
         return 0;
     }
 
-    char *file_content = file_read(argv[2]);
-    printf("*** START: FILE CONTENT ***\n"
-           "%s\n"
-           "*** END: FILE CONTENT ***\n",
-           file_content);
+    char *file_content = file_read(argv[1]);
+    caesar_encrypt(file_content, "1");
+    caesar_encrypt(file_content, "-1");
+
+    printf("%s\n", file_content);
 
     return 0;
 }
