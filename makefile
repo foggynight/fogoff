@@ -2,7 +2,7 @@
 # Released under the MIT license
 
 CC=gcc
-CFLAGS=-Wall -Wextra -Wpedantic -I./inc/
+CFLAGS=-Wall -Wextra -Wpedantic
 
 PROG=fogoff
 HEDS=$(wildcard inc/*.h)
