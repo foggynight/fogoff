@@ -1,12 +1,6 @@
 /**
  * fogoff - File encryption utility
  *
- * Encrypt files using the Advanced Encryption Standard (AES) algorithm.
- *
- * Usage: fogoff MODE FILEPATH
- * - MODE      (e)ncrypt or (d)ecrypt
- * - FILEPATH  Path to the target file
- *
  * Copyright (C) 2020-2021 Robert Coffey
  * Released under the MIT license
  **/
