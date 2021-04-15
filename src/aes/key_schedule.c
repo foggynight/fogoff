@@ -1,5 +1,5 @@
 /**
- * *** Rijndael's Key Schedule ***
+ * --- Rijndael's Key Schedule ---
  *
  * References
  * https://cryptography.fandom.com/wiki/Rijndael_key_schedule
