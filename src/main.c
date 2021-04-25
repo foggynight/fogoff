@@ -2,7 +2,7 @@
  * fogoff - File encryption utility
  *
  * Copyright (C) 2020-2021 Robert Coffey
- * Released under the MIT license
+ * Released under the GPLv2 license
  **/
 
 #include <stdio.h>

@@ -6,7 +6,7 @@
  * https://samiam.org/key-schedule.html
  *
  * Copyright (C) 2021 Robert Coffey
- * Released under the MIT license
+ * Released under the GPLv2 license
  **/
 
 #include <stdint.h>

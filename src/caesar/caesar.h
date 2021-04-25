@@ -1,5 +1,5 @@
 // Copyright (C) 2021 Robert Coffey
-// Released under the MIT license
+// Released under the GPLv2 license
 
 #ifndef FOGOFF_CAESAR_H
 #define FOGOFF_CAESAR_H
